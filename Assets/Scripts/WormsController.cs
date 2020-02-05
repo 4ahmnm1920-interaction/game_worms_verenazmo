@@ -5,6 +5,8 @@ using UnityEngine;
 public class WormsController : MonoBehaviour
 {
     public Rigidbody rb;
+    public Rigidbody rb2;
+    public float ammospeed;
     public float jumpForce;
     public float moveForce;
 
@@ -35,6 +37,18 @@ public class WormsController : MonoBehaviour
             Vector3 goback = new Vector3(-moveForce, 0, 0);
             rb.AddForce(goback);
         }
+
+        if (Input.GetKeyDown(KeyCode.S))
+        {
+            Rigidbody clone;
+            Vector3 dings = new Vector3(0.5f, 0.5f, 0f);
+            clone = Instantiate(rb2, transform.position + dings, transform.rotation);
+            clone.velocity = transform.TransformDirection(ammospeed, 0, 0);
+            Vector3 kraft = new Vector3(ammospeed, 0, 0);
+            rb.AddForce(kraft);
+        }
+
+    
     }
 
 }
