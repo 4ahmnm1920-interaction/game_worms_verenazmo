@@ -5,6 +5,7 @@ using UnityEngine;
 public class WormsController : MonoBehaviour
 {
     public Rigidbody rb;
+    public Rigidbody rb_p2;
     public Rigidbody rb2;
     public float ammospeed;
     public float jumpForce;
@@ -47,8 +48,38 @@ public class WormsController : MonoBehaviour
             Vector3 kraft = new Vector3(ammospeed, 0, 0);
             rb.AddForce(kraft);
         }
+        // 2nd player
 
-    
+
+        if (Input.GetKeyDown(KeyCode.UpArrow))
+        {
+            Vector3 force2 = new Vector3(0, jumpForce, 0);
+            rb_p2.AddForce(force2);
+            Debug.Log("Space Taste ist gedrueckt");
+        }
+
+        if (Input.GetKey(KeyCode.RightArrow))
+        {
+            Vector3 go2 = new Vector3(moveForce, 0, 0);
+            rb_p2.AddForce(go2);
+        }
+
+        if (Input.GetKey(KeyCode.LeftArrow))
+        {
+            Vector3 goback2 = new Vector3(-moveForce, 0, 0);
+            rb_p2.AddForce(goback2);
+        }
+
+        if (Input.GetKeyDown(KeyCode.DownArrow))
+        {
+            Rigidbody clone;
+            Vector3 dings2 = new Vector3(0.5f, 0.5f, 0f);
+            clone = Instantiate(rb2, transform.position + dings2, transform.rotation);
+            clone.velocity = transform.TransformDirection(ammospeed, 0, 0);
+            Vector3 kraft2 = new Vector3(ammospeed, 0, 0);
+            rb2.AddForce(kraft2);
+
+        }
+
     }
-
 }
