@@ -10,6 +10,8 @@ public class WormsController : MonoBehaviour
     public float ammospeed;
     public float jumpForce;
     public float moveForce;
+    public Transform SpawnPoint;
+    public Transform SpawnPoint2;
 
     // Start is called before the first frame update
     void Start()
@@ -41,9 +43,9 @@ public class WormsController : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.S))
         {
+            Vector3 position = SpawnPoint.position;
             Rigidbody clone;
-            Vector3 dings = new Vector3(0.5f, 0.5f, 0f);
-            clone = Instantiate(rb2, transform.position + dings, transform.rotation);
+            clone = Instantiate(rb2, position, transform.rotation);
             clone.velocity = transform.TransformDirection(ammospeed, 0, 0);
             Vector3 kraft = new Vector3(ammospeed, 0, 0);
             rb.AddForce(kraft);
@@ -72,9 +74,9 @@ public class WormsController : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.DownArrow))
         {
+            Vector3 position2 = SpawnPoint2.position;
             Rigidbody clone;
-            Vector3 dings2 = new Vector3(0.5f, 0.5f, 0f);
-            clone = Instantiate(rb2, transform.position + dings2, transform.rotation);
+            clone = Instantiate(rb2, position2, transform.rotation);
             clone.velocity = transform.TransformDirection(ammospeed, 0, 0);
             Vector3 kraft2 = new Vector3(ammospeed, 0, 0);
             rb2.AddForce(kraft2);
