@@ -46,9 +46,9 @@ public class WormsController : MonoBehaviour
             Vector3 position = SpawnPoint.position;
             Rigidbody clone;
             clone = Instantiate(rb2, position, transform.rotation);
-            clone.velocity = transform.TransformDirection(ammospeed, 0, 0);
+            //clone.velocity = transform.TransformDirection(ammospeed, 0, 0);
             Vector3 kraft = new Vector3(ammospeed, 0, 0);
-            rb.AddForce(kraft);
+            clone.AddForce(kraft);
         }
         // 2nd player
 
@@ -77,11 +77,10 @@ public class WormsController : MonoBehaviour
             Vector3 position2 = SpawnPoint2.position;
             Rigidbody clone;
             clone = Instantiate(rb2, position2, transform.rotation);
-            clone.velocity = transform.TransformDirection(ammospeed, 0, 0);
-            Vector3 kraft2 = new Vector3(ammospeed, 0, 0);
-            rb2.AddForce(kraft2);
+            //clone.velocity = transform.TransformDirection(ammospeed, 0, 0);
+            Vector3 kraft2 = new Vector3(-ammospeed, 0, 0);
+            clone.AddForce(kraft2);
 
         }
-
     }
 }
